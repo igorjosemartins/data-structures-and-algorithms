@@ -39,13 +39,26 @@ class BinaryTree:
     else:
       return self._recursive_search(node.right, val)
     
+  def pre_order_traversal(self):
+    result = []
+    self._recursive_pre_order_traversal(self.root, result)
+    return result
+  
+  def _recursive_pre_order_traversal(self, node, result):
+    if node:
+      result.append(node.val)
+      self._recursive_pre_order_traversal(node.left, result)
+      self._recursive_pre_order_traversal(node.right, result)
+    
 tree = BinaryTree()
-values = [2, 5, 8, 12, 9, 4, 3]
+values = [5, 3, 1, 10, 15, 7]
 
 for val in values:
   tree.insert(val)
   
-print(tree.search(5)) # True
-print(tree.search(9)) # True
-print(tree.search(11)) # False
-print(tree.search(1)) # False
+# print(tree.search(5))  # True
+# print(tree.search(9))  # False
+# print(tree.search(11)) # False
+# print(tree.search(1))  # True
+
+print(tree.pre_order_traversal()) # [5, 3, 1, 10, 7, 15]
