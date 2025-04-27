@@ -12,32 +12,32 @@ class BinaryTree:
     if self.root is None:
       self.root = Node(val)
     else:
-      self.recursive_insert(self.root, val)
+      self._recursive_insert(self.root, val)
   
-  def recursive_insert(self, node, val):
+  def _recursive_insert(self, node, val):
     if val < node.val:
       if node.left is None:
         node.left = Node(val)
       else:
-        self.recursive_insert(node.left, val)
+        self._recursive_insert(node.left, val)
     else:
       if node.right is None:
         node.right = Node(val)
       else:
-        self.recursive_insert(node.right, val)
+        self._recursive_insert(node.right, val)
         
   def search(self, val):
-    return self.recursive_search(self.root, val)
+    return self._recursive_search(self.root, val)
   
-  def recursive_search(self, node, val):
+  def _recursive_search(self, node, val):
     if not node:
       return False
     if val == node.val:
       return True
     elif val < node.val:
-      return self.recursive_search(node.left, val)
+      return self._recursive_search(node.left, val)
     else:
-      return self.recursive_search(node.right, val)
+      return self._recursive_search(node.right, val)
     
 tree = BinaryTree()
 values = [2, 5, 8, 12, 9, 4, 3]
