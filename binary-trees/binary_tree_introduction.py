@@ -39,16 +39,16 @@ class BinaryTree:
     else:
       return self._recursive_search(node.right, val)
     
-  def pre_order_traversal(self):
+  def preorder_traversal(self):
     result = []
-    self._recursive_pre_order_traversal(self.root, result)
+    self._recursive_preorder_traversal(self.root, result)
     return result
   
-  def _recursive_pre_order_traversal(self, node, result):
+  def _recursive_preorder_traversal(self, node, result):
     if node:
       result.append(node.val)
-      self._recursive_pre_order_traversal(node.left, result)
-      self._recursive_pre_order_traversal(node.right, result)
+      self._recursive_preorder_traversal(node.left, result)
+      self._recursive_preorder_traversal(node.right, result)
 
   def inorder_traversal(self):
     result = []
