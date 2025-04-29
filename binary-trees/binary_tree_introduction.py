@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
   def __init__(self, val: int):
     self.val = val
@@ -54,6 +56,27 @@ class BinaryTree:
     if self._dfs_recursive(node.right, val):
       return True
     
+  def bfs(self, val):
+    if self.root is None:
+      return False
+    
+    queue = deque()
+    queue.append(self.root)
+    
+    while queue:
+      node = queue.popleft()
+      print(node.val)
+      
+      if node.val == val:
+        return True
+      
+      if node.left:
+        queue.append(node.left)
+      if node.right:
+        queue.append(node.right)
+    
+    return False
+    
   def preorder_traversal(self):
     result = []
     self._recursive_preorder_traversal(self.root, result)
@@ -102,4 +125,7 @@ for val in values:
 # print(tree.inorder_traversal())   # [1, 3, 5, 7, 10, 15]
 # print(tree.postorder_traversal()) # [1, 3, 7, 15, 10, 5]
 
-print(tree.dfs(2))
+# print(tree.dfs(2))
+
+print(tree.bfs(10)) # True
+print(tree.bfs(12)) # False
