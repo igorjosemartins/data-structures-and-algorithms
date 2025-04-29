@@ -55,6 +55,7 @@ class BinaryTree:
       return True
     if self._dfs_recursive(node.right, val):
       return True
+    return False
     
   def bfs(self, val):
     if self.root is None:
@@ -125,7 +126,8 @@ for val in values:
 # print(tree.inorder_traversal())   # [1, 3, 5, 7, 10, 15]
 # print(tree.postorder_traversal()) # [1, 3, 7, 15, 10, 5]
 
-# print(tree.dfs(2))
+print(tree.dfs(20)) # True
+print(tree.dfs(13)) # False
 
 print(tree.bfs(10)) # True
 print(tree.bfs(12)) # False
