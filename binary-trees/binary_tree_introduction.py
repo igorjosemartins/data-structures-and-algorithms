@@ -39,6 +39,21 @@ class BinaryTree:
     else:
       return self._recursive_search(node.right, val)
     
+  def dfs(self, val):
+    return self._dfs_recursive(self.root, val)
+	
+  def _dfs_recursive(self, node, val):
+    if node:
+      print(node.val)
+    if node is None:
+      return False
+    if node.val == val:
+      return True
+    if self._dfs_recursive(node.left, val):
+      return True
+    if self._dfs_recursive(node.right, val):
+      return True
+    
   def preorder_traversal(self):
     result = []
     self._recursive_preorder_traversal(self.root, result)
@@ -73,7 +88,7 @@ class BinaryTree:
       result.append(node.val)
     
 tree = BinaryTree()
-values = [5, 3, 1, 10, 15, 7]
+values = [5, 3, 1, 10, 15, 7, 20]
 
 for val in values:
   tree.insert(val)
@@ -83,6 +98,8 @@ for val in values:
 # print(tree.search(11)) # False
 # print(tree.search(1))  # True
 
-print(tree.pre_order_traversal()) # [5, 3, 1, 10, 7, 15]
-print(tree.inorder_traversal())   # [1, 3, 5, 7, 10, 15]
-print(tree.postorder_traversal()) # [1, 3, 7, 15, 10, 5]
+# print(tree.pre_order_traversal()) # [5, 3, 1, 10, 7, 15]
+# print(tree.inorder_traversal())   # [1, 3, 5, 7, 10, 15]
+# print(tree.postorder_traversal()) # [1, 3, 7, 15, 10, 5]
+
+print(tree.dfs(2))
