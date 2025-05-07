@@ -30,6 +30,7 @@ def networkDelayTime(times, n, k):
   while min_heap:
     curr_distance, curr_node = heapq.heappop(min_heap)
     
+    # é preciso fazer esta validação porque nós só adicionamos os nodes de origem no dicionario
     row = table.get(curr_node)
     
     if row:
