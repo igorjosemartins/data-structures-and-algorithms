@@ -18,27 +18,37 @@ class MinHeap:
     
     parent_index = self._parent(index)
     
+    # caso o node filho seja menor que o pai
     if self.heap[index] < self.heap[parent_index]:
+      # realiza o swap
       self.heap[index], self.heap[parent_index] = self.heap[parent_index], self.heap[index]
+      # segue a mesma lógica recursivamente
       self._heapify_up(parent_index)
   
   # função para reordenar a lista caso o root seja removido
   def _heapify_down(self, parent_index):
+    # pega o tamanho de heap para evitar erro de out of bounds
     size = len(self.heap)
     
+    # pega o node esquerdo e direito
     left = self._left_child(parent_index)
     right = self._right_child(parent_index)
     
+    # inicializa com o pai
     smallest_index = parent_index
     
+    # valida se o node a esquerda é menor que o pai
     if left < size and self.heap[left] < self.heap[smallest_index]:
       smallest_index = left
     
+    # valida se o node a direita é menor que o pai
     if right < size and self.heap[right] < self.heap[smallest_index]:
       smallest_index = right
     
-    # caso o menor esteja na esquerda ou na direita, realizamos o swap  
+    # caso o pai seja o menor, o heap já está correto
+    # caso o menor esteja na esquerda ou na direita
     if smallest_index != parent_index:
+      # realizamos o swap e segue a mesma lógica recursivamente
       self.heap[parent_index], self.heap[smallest_index] = self.heap[smallest_index], self.heap[parent_index]
       self._heapify_down(smallest_index)
       
